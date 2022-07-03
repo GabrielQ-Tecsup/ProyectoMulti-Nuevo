@@ -65,6 +65,7 @@ function LoginScreen() {
     })
     .catch(error => {
       console.log(error)
+      Alert.alert('El usuario que has escrito no existe')
     })
   }
 
