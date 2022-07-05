@@ -16,6 +16,8 @@ import { useNavigation } from '@react-navigation/native'
 import Home from './src/screens/Home';
 import Add from './src/screens/Add';
 import TabConfig from "./src/components/TapConfig";
+import Ayuda from "./src/screens/Ayuda";
+import Nosotros from "./src/screens/Nosotros";
 
 const uri = "https://ak.picdn.net/shutterstock/videos/1060308725/thumb/1.jpg"
 const profilePicture = 'https://randomuser.me/api/portraits/men/27.jpg'
@@ -27,6 +29,8 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} options={{title: 'Iniciar Sesion'}} />
         <Stack.Screen name="Home" component={TabConfig} options={{headerShown: false}}/>
         <Stack.Screen name="Add" component={Add} options={{title: 'Cancelar'}}/>
+        <Stack.Screen name="Ayuda" component={Ayuda} options={{title: 'Regresar'}}/>
+        <Stack.Screen name="Nosotros" component={Nosotros} options={{title: 'Regresar'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

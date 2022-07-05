@@ -1,21 +1,26 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, StatusBar, SafeAreaView, TouchableOpacity} from 'react-native';
+import { View, Text, FlatList, StyleSheet, StatusBar, SafeAreaView,
+TouchableOpacity} from 'react-native';
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 const ajustes = [
   {
     id: 1,
     name: 'Cerrar Sesion',
-    icon: 'user'
+    icon: 'user',
+    Screen: 'Login'
   },
   {
     id: 2,
     name: 'Ayuda y Soporte',
-    icon: 'customerservice'
+    icon: 'customerservice',
+    screen: 'Ayuda'
   },
   {
     id: 3,
     name: 'Sobre Nosotros',
-    icon: 'questioncircleo'
+    icon: 'questioncircleo',
+    screen: 'Nosotros'
   },
   {
     id: 4,
@@ -23,30 +28,31 @@ const ajustes = [
     iconSalir: 'exit-run'
   },
 ]
-const Item = ({ icon, name, iconSalir}) => {
-    return (
-    <TouchableOpacity>
-        <View style={styles.item}>
-          <AntDesign name={icon} size={23} style={{paddingTop: 12}} />
-          <MaterialCommunityIcons name={iconSalir} size={23} style={{paddingTop: 12}} />
-          <Text style={styles.name}>{name}</Text>
-        </View>
-    </TouchableOpacity>
-    );}
-export default function settingsView() {
-  const renderItem = ({item}) => (
-        <Item icon={item.icon} name={item.name} iconSalir={item.iconSalir}/>
+const Config = () => {
+  const navigation = useNavigation( );
+return (
+  <FlatList
+    data = {ajustes}
+    keyExtractor={(item) => item.id}
+    renderItem={({item}) => (
+      <TouchableOpacity
+          onPress={() => navigation.navigate(item.screen)}
+          style={styles.container}
+          >  
+          <View style={styles.item}>
+              <Text style={styles.name}>{item.name}</Text>
+          </View>
+      </TouchableOpacity>
+  )}
+  />
+)
 
-      );
-  return(
-    <SafeAreaView style={styles.container}>
-      <FlatList
-            data={ajustes}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}/>
-    </SafeAreaView>
-  );
+
 }
+
+export default Config
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -58,10 +64,6 @@ const styles = StyleSheet.create({
       marginHorizontal: 16,
       backgroundColor: 'white',
       flexDirection: "row",
-    },
-    arrowItem: {
-      alignSelf: 'flex-end',
-      paddingTop: 10,
     },
     name: {
       fontSize: 20,
