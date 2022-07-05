@@ -7,8 +7,7 @@ const ajustes = [
   {
     id: 1,
     name: 'Cerrar Sesion',
-    icon: 'user',
-    Screen: 'Login'
+    icon: 'user'
   },
   {
     id: 2,
