@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet, StatusBar, SafeAreaView,
 TouchableOpacity} from 'react-native';
-import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 const ajustes = [
   {
     id: 1,
     name: 'Cerrar Sesion',
-    icon: 'user'
+    icon: 'user',
+    screen: 'Login'
   },
   {
     id: 2,
@@ -18,13 +19,14 @@ const ajustes = [
   {
     id: 3,
     name: 'Sobre Nosotros',
-    icon: 'questioncircleo',
+    icon: 'eyeo',
     screen: 'Nosotros'
   },
   {
     id: 4,
-    name: 'Salir',
-    iconSalir: 'exit-run'
+    name: 'Guia',
+    icon: 'questioncircleo',
+    screen: 'Guia'
   },
 ]
 const Config = () => {
@@ -39,6 +41,7 @@ return (
           style={styles.container}
           >  
           <View style={styles.item}>
+              <AntDesign name={item.icon} size={25} color="black" style={{paddingTop: 12}} />
               <Text style={styles.name}>{item.name}</Text>
           </View>
       </TouchableOpacity>
